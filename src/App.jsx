@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h2>Shopping Cart</h2>
+      <h2>Add Shopping Cart To Local Storage</h2>
       <Bottles></Bottles>
     </>
   )
