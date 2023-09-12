@@ -1,0 +1,27 @@
+.bottleStyle{
+      border: 2px solid gray;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 10px 5px 5px rgb(111, 106, 106);
+}
+
+.bottleStyle img {
+      width: 300px;
+}
+
+.bottleStyle p{
+      font-size: 20px;
+      font-weight: 500;
+}
+
+.bottleStyle button {
+      border: inherit;
+}
+
+.bottleStyle button:hover {
+      background-color: gray;
+      color: white;
+      border: none;
+      transition: ease-in-out;
+}

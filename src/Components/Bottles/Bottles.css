@@ -1,0 +1,26 @@
+.bottlesStyle {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+}
+
+.cardBottleStyle{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      justify-items: center;
+      gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+      .bottlesStyle {
+            grid-template-columns: repeat(1, 1fr);
+      }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+      .bottlesStyle {
+            grid-template-columns: repeat(2, 1fr);
+      }
+}
