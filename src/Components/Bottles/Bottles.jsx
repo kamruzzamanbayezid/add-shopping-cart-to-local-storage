@@ -13,7 +13,6 @@ const Bottles = () => {
       // Use state to store data when handlePurchase is Clicked
       const [getBottle, setGetBottle] = useState([]);
 
-      console.log(getBottle);
       // Use Effect to load main data
       useEffect(() => {
             const fetchData = async () => {
@@ -29,37 +28,33 @@ const Bottles = () => {
       }, []);
 
       // use effect to show data after purchased
-      // useEffect(() => {
-      //       if (bottles.length > 0) {
-      //             const storedStringifiedData = getStoredCartFromLocalStorage();
+      useEffect(() => {
+            if (bottles.length > 0) {
+                  const storedStringifiedData = getStoredCartFromLocalStorage();
 
-      //             let savedData = [];
-      //             for (let id of storedStringifiedData) {
-
-      //                   const findData = bottles.find(data => data.id === id);
-
-      //                   savedData.push(findData);
-      //             }
-      //             setGetBottle(savedData)
-      //       }
-      // }, [bottles])
+                  let savedData = [];
+                  for (let id of storedStringifiedData) {
+                        const findData = bottles.find(data => data.id === id);
+                        savedData.push(findData);
+                  }
+                  setGetBottle(savedData)
+            }
+      }, [bottles])
 
       // Click handler for purchase
       const handlePurchase = (bottle) => {
             const newBottle = [...getBottle, bottle];
             setGetBottle(newBottle);
 
-            // addToLocalStorage(bottle.id);
+            addToLocalStorage(bottle.id);
       }
 
       // Click handler to remove item
       const handleCartBottle = (id) => {
             const remaining = getBottle.filter(bottle => bottle.id !== id)
-            console.log(remaining);
-            // setGetBottle(remaining);
-            setGetBottle(prev => [...remaining])
-
-            // removeCartFromLocalStorage(id);
+            setGetBottle(remaining);
+            // setGetBottle(prev => [...remaining])
+            removeCartFromLocalStorage(id);
       }
 
       return (
@@ -71,8 +66,8 @@ const Bottles = () => {
                   {/* Single cart */}
                   <div className="cardBottleStyle">
                         {
-                              getBottle.map(cartBottle => <Cart
-                                    key={cartBottle.id}
+                              getBottle.map((cartBottle, index) => <Cart
+                                    key={cartBottle.id + index}
                                     cartBottle={cartBottle}
                                     handleCartBottle={handleCartBottle}>
                               </Cart>)
